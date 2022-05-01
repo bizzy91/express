@@ -20,6 +20,13 @@ app.use(express.urlencoded({ extended: false }));  // body-parser 의 urlencoded
 //업로드 path 추가
 app.use('/uploads', express.static('uploads'));
 
+// 템플릿 변수
+app.use( (req, res, next) => {
+    app.locals.isLogin = true;
+    next();
+});
+
+// 처음 화면
 app.get('/', (req,res) => {
     res.send('express start!');
 });
@@ -30,6 +37,7 @@ function vipMiddleWare(req, res, next){
     next();
 }
 
+// Nunjucks 적용하기
 nunjucks.configure('template', {
     autoescape: true,  // true -> HTML 태그 출력, false -> 태그 적용 후 출력
     express: app  // express: [express를 가져와 할당한 객체의 이름]
