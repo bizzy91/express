@@ -14,6 +14,8 @@ const port = 3000;
 
 // 미들웨어 셋팅
 app.use(logger('dev'));
+app.use(express.json());  // body-parser 의 json 함수 사용하기
+app.use(express.urlencoded({ extended: false }));  // body-parser 의 urlencoded 함수 사용하기
 
 app.get('/', (req,res) => {
     res.send('express start!');
