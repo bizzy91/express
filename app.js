@@ -46,6 +46,16 @@ nunjucks.configure('template', {
 // Routing
 app.use('/admin', vipMiddleWare, admin);
 
+// 404
+app.use( ( req , res, _ ) => {
+    res.status(404).render('common/404.html')
+});
+
+// 500
+app.use( (err, req, res,  _ ) => {
+    res.status(500).render('common/500.html')
+});
+
 app.listen(port, () => {
     console.log('Express listening on port', port);
 });
