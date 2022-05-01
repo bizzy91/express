@@ -17,6 +17,9 @@ app.use(logger('dev'));
 app.use(express.json());  // body-parser 의 json 함수 사용하기
 app.use(express.urlencoded({ extended: false }));  // body-parser 의 urlencoded 함수 사용하기
 
+//업로드 path 추가
+app.use('/uploads', express.static('uploads'));
+
 app.get('/', (req,res) => {
     res.send('express start!');
 });
