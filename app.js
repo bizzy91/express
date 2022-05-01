@@ -15,7 +15,7 @@ app.get('/', (req,res) => {
 });
 
 nunjucks.configure('template', {
-    autoescape: true,  // 로깅
+    autoescape: true,  // true -> HTML 태그 출력, false -> 태그 적용 후 출력
     express: app  // express: [express를 가져와 할당한 객체의 이름]
 });
 
